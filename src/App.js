@@ -16,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FilledTextFields() {
   const classes = useStyles();
+  const [values, setValues] = React.useState({
+    phrase: ""
+  });
+  console.log(values.phrase);
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
   return (
     <form className={classes.container} noValidate autoComplete="off">
@@ -25,9 +32,13 @@ export default function FilledTextFields() {
         placeholder="Phrase..."
         multiline
         className={classes.textField}
+        value={values.phrase}
+        onChange={handleChange("phrase")}
         margin="normal"
         variant="filled"
+        helperText="Phrase Kabyle"
       />
+      <h1>{values.phrase}</h1>
     </form>
   );
 }
