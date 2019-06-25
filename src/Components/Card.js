@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   card: {
-    minWidth: 275
+    minWidth: 300
   },
   bullet: {
     display: "inline-block",
@@ -32,11 +32,7 @@ function SimpleCard() {
           Le mots du jour
         </Typography>
         <Typography variant="h5" component="h2">
-          be
-          {bull}
-          nev
-          {bull}o{bull}
-          lent
+          be{bull}nev{bull}o{bull}lent
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           adjective

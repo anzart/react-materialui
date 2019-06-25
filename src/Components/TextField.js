@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -19,33 +19,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function FilledTextFields() {
-  const classes = useStyles();
-  const [values, setValues] = React.useState({
-    phrase: ""
+  const { container, textField } = useStyles();
+  const [values, setValues] = useState({
+    sentence: "",
+    translateFr: "",
+    translateEn: "",
+    word: "",
+    timeStamp: Date.now()
   });
-  console.log(values.phrase);
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  console.log(values);
+  const handleChange = (prop) => ({ target: { value } }) => {
+    setValues({ ...values, [prop]: value });
   };
 
   return (
     <>
-      <form className={classes.container} noValidate autoComplete="off">
+      <form className={container} noValidate autoComplete="off">
         <TextField
           id="filled-textarea"
           label="Ajouter votre phrase"
           placeholder="Phrase..."
-          className={classes.textField}
-          value={values.phrase}
-          onChange={handleChange("phrase")}
+          className={textField}
+          value={values.sentence}
+          onChange={handleChange("sentence")}
           margin="normal"
           variant="filled"
           helperText="Une phrase en Kabyle"
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton className={classes.content} edge="end" aria-label="Toggle password visibility">
-                  <AddCircle className={classes.icon} />
+                <IconButton edge="end" aria-label="Toggle password visibility">
+                  <AddCircle />
                 </IconButton>
               </InputAdornment>
             )
@@ -59,3 +63,37 @@ function FilledTextFields() {
 }
 
 export default FilledTextFields;
+
+// function Hello() {
+//   return (
+//     <div>
+//       <Text label="Azul" />
+//       <Text label="Bonjour" />
+//       <Text label="Ansuf" />
+//     </div>
+//   );
+// }
+
+// function Text(props) {
+//   const [label, setLabel] = useState("World");
+
+//   return (
+//     <>
+//       <h1>Hello {label}</h1>
+//       <button onClick={(_) => setLabel(props.label)}>OK</button>
+//     </>
+//   );
+// }
+
+/* const age = 23;
+const monAge = "monAgeEst";
+const name = "Abdenour";
+
+const obj = {
+  age,
+  [monAge]: "lamriw",
+  monAge,
+  name
+};
+
+console.log(obj); */
