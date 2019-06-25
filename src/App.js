@@ -1,8 +1,13 @@
 import React from "react";
-import { FilledTextFields } from "./Components";
+import { Card, TextField } from "./Components";
 
 function App() {
-  return <FilledTextFields />;
+  return (
+    <>
+      <TextField />
+      <Card />
+    </>
+  );
 }
 
 export default App;
