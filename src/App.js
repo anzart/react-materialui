@@ -16,8 +16,8 @@ function App() {
   };
 
   const defaultOptions = {
-    loop: true,
-    autoplay: true,
+    loop: false,
+    autoplay: false,
     animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      <Lottie options={defaultOptions} height={400} width={400} isStopped={isStopped} isPaused={isPaused} />
+      <Lottie options={defaultOptions} height={300} width={300} isStopped={isStopped} isPaused={isPaused} />
       <button style={buttonStyle} onClick={() => setIsStopped(true)}>
         stop
       </button>
