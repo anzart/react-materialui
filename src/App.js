@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Lottie from "react-lottie";
+import animationData from "./animation.json";
+import "./App.css";
 
 function App() {
+  const [isStopped, setIsStopped] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  console.log("isStopped", isStopped);
+  console.log("isPaused", isPaused);
+
+  const buttonStyle = {
+    display: "block",
+    margin: "10px auto"
+  };
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Lottie options={defaultOptions} height={400} width={400} isStopped={isStopped} isPaused={isPaused} />
+      <button style={buttonStyle} onClick={() => setIsStopped(true)}>
+        stop
+      </button>
+      <button style={buttonStyle} onClick={() => setIsStopped(false)}>
+        play
+      </button>
+      <button style={buttonStyle} onClick={() => setIsPaused(!isPaused)}>
+        pause
+      </button>
     </div>
   );
 }
